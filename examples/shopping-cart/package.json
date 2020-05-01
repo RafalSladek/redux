@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "Redux shopping-cart example",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -20,7 +22,8 @@
     "react-dom": "^0.14.7",
     "react-redux": "^4.2.1",
     "redux": "^3.2.1",
-    "redux-thunk": "^1.0.3"
+    "redux-thunk": "^1.0.3",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "babel-core": "^6.3.15",
@@ -34,5 +37,6 @@
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.2.0"
-  }
+  },
+  "snyk": true
 }
