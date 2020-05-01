@@ -23,12 +23,13 @@
     "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js dist/redux.min.js",
     "build:examples": "babel-node examples/buildAll.js",
     "build": "npm run build:lib && npm run build:umd && npm run build:umd:min && node ./prepublish",
-    "prepublish": "npm run clean && npm run check:lib && npm run build",
+    "prepublish": "npm run snyk-protect && npm run clean && npm run check:lib && npm run build",
     "docs:clean": "rimraf _book",
     "docs:prepare": "gitbook install",
     "docs:build": "npm run docs:prepare && gitbook build -g rackt/redux",
     "docs:watch": "npm run docs:prepare && gitbook serve",
-    "docs:publish": "npm run docs:clean && npm run docs:build && cp CNAME _book && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:rackt/redux gh-pages --force"
+    "docs:publish": "npm run docs:clean && npm run docs:build && cp CNAME _book && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:rackt/redux gh-pages --force",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -58,7 +59,8 @@
   "homepage": "http://rackt.github.io/redux",
   "dependencies": {
     "lodash": "^4.2.0",
-    "loose-envify": "^1.1.0"
+    "loose-envify": "^1.1.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "babel-cli": "^6.3.15",
@@ -111,5 +113,6 @@
     "transform": [
       "loose-envify"
     ]
-  }
+  },
+  "snyk": true
 }
